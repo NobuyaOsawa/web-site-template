@@ -1,0 +1,22 @@
+.hoge {
+  color: red;
+}
+
+a {
+  font-size: 14px;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #bf6a7a;
+}
+
+.fuga {
+  font-size: 16px;
+  padding: 8px;
+  background-color: powderblue;
+}
+
+.piyo {
+  font-size: 32px;
+}
