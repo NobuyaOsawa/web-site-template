@@ -1,0 +1,75 @@
+// ## インポート
+// - インポートされるファイル名は「_hoge.scss」とすることで、下記記述により参照可能
+// @import "hoge";
+// ## 変数
+// - 接頭辞を「$」として変数を宣言し、値を代入
+$color-attention: red; // - 変数名を記述し、値を展開
+
+.hoge {
+  color: $color-attention;
+}
+// ## &プレースホルダ
+
+a {
+  font-size: 14px;
+  text-decoration: none;
+  // - &プレースホルダで親セレクタ（a）の名前を参照し、「a:hover」として出力
+  &:hover {
+    color: #bf6a7a;
+  }
+}
+// ## @mixin
+// - 関数として複数のstyleを保持し、流用可
+// - 宣言
+@mixin infomation {
+  font-size: 16px;
+  padding: 8px;
+  background-color: powderblue;
+}
+// - @include [関数名] で展開
+
+.fuga {
+  @include infomation;
+}
+// ### 引数を伴う@mixin
+@mixin large-font($multiple) {
+  font-size: 16 * $multiple + px;
+}
+
+.piyo {
+  @include large-font(2);
+}
+
+// test
+// ├──foundation/
+// ├──layout/
+// └──object/
+//     ├──component/
+//     ├──project/
+//     └──utility/
+// foundation -- Reset.cssなど土台となるCSS群
+// layout -- header, main, sidebar, footerなどのレイアウト用CSS群
+.l-container {
+  width: 960px;
+  margin: auto;
+  padding: 16px;
+}
+// object/component -- grid, button, formなどの再利用できる小さなコンポーネントCSS群
+.c-alert {
+  border: solid #000 1px;
+  border-radius: 2px;
+  padding: 8px 16px;
+  font-size: 18px;
+
+  &--success {
+    border: solid #007DE8 1px;
+    background-color: #C9EAFF;
+  }
+
+  &--warning {
+    border: solid #FF6594 1px;
+    background-color: #FFD3D3;
+  }
+}
+// object/project -- articles, ranking, promoなどのプロジェクト固有のコンポーネントCSS群(後述しますが、object/componentとの違いがすこしややこしいです)
+// object/utility -- clearfix, display, marginなどのユーティリティクラスを定義するCSS群
